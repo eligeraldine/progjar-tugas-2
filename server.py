@@ -21,7 +21,8 @@ class ProcessTheClient(threading.Thread):
                         print("Received TIME request from client")
                         logging.info(f"Responding with current time to {self.address}")
 
-                        current_time = time.strftime("%H:%M:%S")
+                        now = datetime.now()
+                        current_time = now.strftime("%H:%M:%S")
                         response = f"JAM {current_time}\r\n"
                         self.connection.sendall(response.encode('utf-8'))
 
